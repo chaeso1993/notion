@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Date</title>
+    <style>
+        /* Reset 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 전체 페이지 스타일 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white; /* 회색 음영 제거 */
+            font-family: Arial, sans-serif;
+        }
+
+        /* 텍스트 스타일 */
+        .date {
+            font-size: 20px; /* 글꼴 크기 조정 */
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="date" id="current-date"></div>
+
+    <script>
+        // 날짜 포맷: "Today is yyyy-mm-dd(ddd)"
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const date = String(now.getDate()).padStart(2, "0");
+        const day = days[now.getDay()];
+        const formattedDate = `Today is ${year}-${month}-${date} (${day})`;
+
+        // 화면에 날짜 표시
+        document.getElementById("current-date").textContent = formattedDate;
+    </script>
+</body>
+</html>
