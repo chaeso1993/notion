@@ -18,32 +18,40 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: white; /* 회색 음영 제거 */
+            background-color: white; /* 배경 흰색 */
             font-family: Arial, sans-serif;
         }
 
-        /* 텍스트 스타일 */
+        /* 기본 텍스트 스타일 */
         .date {
-            font-size: 20px; /* 글꼴 크기 조정 */
+            font-size: 20px;
             color: black;
+        }
+
+        /* 날짜 강조 스타일 */
+        .highlight {
+            font-weight: bold; /* 볼드체 */
+            color: red; /* 빨간색 */
         }
     </style>
 </head>
 <body>
-    <div class="date" id="current-date"></div>
+    <div class="date">
+        Today is <span class="highlight" id="formatted-date"></span>
+    </div>
 
     <script>
-        // 날짜 포맷: "Today is yyyy-mm-dd(ddd)"
+        // 날짜 포맷: "yyyy-mm-dd (ddd)"
         const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         const now = new Date();
         const year = now.getFullYear();
         const month = String(now.getMonth() + 1).padStart(2, "0");
         const date = String(now.getDate()).padStart(2, "0");
         const day = days[now.getDay()];
-        const formattedDate = `Today is ${year}-${month}-${date} (${day})`;
+        const formattedDate = `${year}-${month}-${date} (${day})`;
 
-        // 화면에 날짜 표시
-        document.getElementById("current-date").textContent = formattedDate;
+        // 강조된 날짜를 추가
+        document.getElementById("formatted-date").textContent = formattedDate;
     </script>
 </body>
 </html>
